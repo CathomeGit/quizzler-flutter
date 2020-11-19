@@ -42,7 +42,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.questions[index].text,
+                quizBrain.getQuestion(index),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -98,12 +98,12 @@ class _QuizPageState extends State<QuizPage> {
 
   void moveForward(bool answer) {
     setState(() {
-      if (answer == quizBrain.questions[index].answer) {
+      if (answer == quizBrain.getAnswer(index)) {
         print('You\'ve got it right');
       } else {
         print('You\'ve got it wrong');
       }
-      index = index == quizBrain.questions.length - 1 ? 0 : index + 1;
+      index = index == quizBrain.size - 1 ? 0 : index + 1;
     });
   }
 }

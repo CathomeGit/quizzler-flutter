@@ -1,10 +1,14 @@
 class Question {
-  String text;
-  bool answer;
+  String _text;
+  bool _answer;
 
   // use {named parameters} only if they are optional
   Question(String q, bool a) {
-    text = q;
-    answer = a;
+    _text = q;
+    _answer = a;
   }
+
+  bool get answer => _answer;
+
+  String get text => _text;
 }
