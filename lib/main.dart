@@ -96,10 +96,10 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   void moveForward(bool answer) {
+    print(answer == quizBrain.getAnswer()
+        ? 'You\'ve got it right'
+        : 'You\'ve got it wrong');
     setState(() {
-      print(answer == quizBrain.getAnswer()
-          ? 'You\'ve got it right'
-          : 'You\'ve got it wrong');
       quizBrain.nextQuestion();
     });
   }
