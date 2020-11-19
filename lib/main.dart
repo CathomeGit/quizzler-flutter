@@ -26,12 +26,13 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
+  int index = 0;
   List<String> questions = [
     'You can lead a cow down stairs but not up stairs.',
     'Approximately one quarter of human bones are in the feet.',
     'A slug\'s blood is green.'
   ];
-  int index = 0;
+  List<bool> answers = [false, true, true];
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +70,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                moveForward();
+                moveForward(true);
               },
             ),
           ),
@@ -87,7 +88,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                moveForward();
+                moveForward(false);
               },
             ),
           ),
@@ -99,15 +100,14 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 
-  void moveForward() {
+  void moveForward(bool answer) {
     setState(() {
-      index == questions.length - 1 ? index : index++;
+      if (answer == answers[index]) {
+        print('You\'ve got it right');
+      } else {
+        print('You\'ve got it wrong');
+      }
+      index = index == questions.length - 1 ? 0 : index + 1;
     });
   }
 }
-
-/*
-question1: 'You can lead a cow down stairs but not up stairs.', false,
-question2: 'Approximately one quarter of human bones are in the feet.', true,
-question3: 'A slug\'s blood is green.', true,
-*/
