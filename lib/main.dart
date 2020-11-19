@@ -27,7 +27,6 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
-  int index = 0;
   QuizBrain quizBrain = QuizBrain();
 
   @override
@@ -42,7 +41,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.getQuestion(index),
+                quizBrain.getQuestion(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -98,12 +97,10 @@ class _QuizPageState extends State<QuizPage> {
 
   void moveForward(bool answer) {
     setState(() {
-      if (answer == quizBrain.getAnswer(index)) {
-        print('You\'ve got it right');
-      } else {
-        print('You\'ve got it wrong');
-      }
-      index = index == quizBrain.size - 1 ? 0 : index + 1;
+      print(answer == quizBrain.getAnswer()
+          ? 'You\'ve got it right'
+          : 'You\'ve got it wrong');
+      quizBrain.nextQuestion();
     });
   }
 }
