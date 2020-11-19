@@ -2,7 +2,8 @@ class Question {
   String text;
   bool answer;
 
-  Question({String q, bool a}) {
+  // use {named parameters} only if they are optional
+  Question(String q, bool a) {
     text = q;
     answer = a;
   }
