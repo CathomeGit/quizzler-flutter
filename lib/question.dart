@@ -3,10 +3,7 @@ class Question {
   bool _answer;
 
   // use {named parameters} only if they are optional
-  Question(String q, bool a) {
-    _text = q;
-    _answer = a;
-  }
+  Question(this._text, this._answer);
 
   bool get answer => _answer;
 
